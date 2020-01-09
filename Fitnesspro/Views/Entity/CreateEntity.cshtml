@@ -1,0 +1,347 @@
+﻿@model Fitnesspro.Models.ViewModels.Web.EntityViewModel
+@{
+    ViewBag.Title = "CreateEntity";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="bottom-border">
+    <div class="row match-height">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Create Entity</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-underline no-hover-bg" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="base-tab31" data-toggle="tab" aria-controls="tab31" href="#tab31" role="tab" aria-selected="true">Entity Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="base-tab32" data-toggle="tab" aria-controls="tab32" href="#tab32" role="tab" aria-selected="false">Package</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content px-1 pt-1">
+                            <div class="tab-pane active" id="tab31" role="tabpanel" aria-labelledby="base-tab31">
+                                <section id="basic-form-layouts">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-content collpase show">
+                                                    <div class="card-body">
+                                                        @*<form class="form form-horizontal form-bordered" novalidate>*@
+                                                        @using (Html.BeginForm("CreateEntity", "Entity", FormMethod.Post))
+                                                        {
+                                                            @Html.HiddenFor(e => e.Entity.EntityId)
+
+                                                            <div class="form-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row">
+                                                                                                                                                    @Html.LabelFor(e => e.Entity.FirstName, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                @Html.TextBoxFor(e => e.Entity.FirstName, new { @class = "form-control border-primary", placeholder = "First Name" })
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row">
+                                                                            @Html.LabelFor(e => e.Entity.LastName, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                @Html.TextBoxFor(e => e.Entity.LastName, new { @class = "form-control border-primary", placeholder = "Last Name" })
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row last">
+                                                                            @Html.LabelFor(e => e.Entity.EntityName, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                @Html.TextBoxFor(e => e.Entity.EntityName, new { @class = "form-control border-primary", placeholder = "Entity Name" })
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row last">
+
+                                                                            @Html.LabelFor(e => e.Entity.ServiceType, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                @Html.DropDownListFor(e => e.Entity.ServiceType.ServiceTypeId, new SelectList(Model.lstserviceTypes, "ServiceTypeId", "ServiceTypeName"), "Select Service Type", new { @class = "form-control border-primary" })
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row last">
+                                                                            @Html.LabelFor(e => e.Entity.MobileNumber, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                @Html.TextBoxFor(e => e.Entity.MobileNumber, new { @class = "form-control border-primary", placeholder = "Mobile Number" })
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row last">
+                                                                            @Html.LabelFor(e => e.Entity.TelephoneNumber, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                @Html.TextBoxFor(e => e.Entity.TelephoneNumber, new { @class = "form-control border-primary", placeholder = "Telephone Number" })
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row last">
+                                                                            @Html.LabelFor(e => e.Entity.EnrollDate, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">
+                                                                                            <span class="fa fa-calendar-o"></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    @Html.TextBoxFor(e => e.Entity.EnrollDate, new { @class = "form-control pickadate", placeholder = "Enrolled Date" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row last">
+                                                                            @Html.LabelFor(e => e.Entity.EstablishedYear, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                @Html.TextBoxFor(e => e.Entity.EstablishedYear, new { @class = "form-control border-primary", placeholder = "Established Year" })
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group row last">
+                                                                            @Html.LabelFor(e => e.Entity.Email, new { @class = "col-md-3 label-control" })
+                                                                            <div class="col-md-9">
+                                                                                @Html.TextBoxFor(e => e.Entity.Email, new { @class = "form-control border-primary", placeholder = "Email" })
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-actions right">
+                                                                <button type="button" class="btn btn-warning mr-1">
+                                                                    <i class="ft-x"></i> Cancel
+                                                                </button>
+                                                                <button type="submit" class="btn btn-primary" id="btnSaveEntity">
+                                                                    <i class="fa fa-check-square-o"></i> Save
+                                                                </button>
+                                                            </div>
+                                                        }
+
+                                                        @*</form>*@
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            </div>
+                            <div class="tab-pane" id="tab32" role="tabpanel" aria-labelledby="base-tab32">
+                                @*tab 2 form can insert here*@
+
+                                <form class="form form-horizontal form-bordered" novalidate>
+                                    <div class="form-body">
+                                        <h4 class="form-section"><i class="ft-user"></i> Select Package</h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 label-control" for="ddlEntityType">Packages</label>
+                                                    <div class="col-md-9">
+                                                        <select id="ddlEntityType" name="ddlEntityType" class="form-control">
+                                                            <option value="0">Select Package</option>
+                                                            <option value="1">Test</option>
+                                                            <option value="2">Saloon</option>
+                                                            <option value="3">Spa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="form-section"><i class="ft-clipboard"></i> Package Details</h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row last">
+                                                    <label class="col-md-3 label-control" for="txtPackageName">Package Name</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" id="txtPackageName" class="form-control border-primary" placeholder="Package Name" name="packagename">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row last">
+                                                    <label class="col-md-3 label-control" for="txtPackageAmount">Amount</label>
+                                                    <div class="col-md-9">
+                                                        <input type="tel" id="txtPackageAmount" class="form-control border-primary" placeholder="Amount" name="amount">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row last">
+                                                    <label class="col-md-3 label-control" for="txtStartDate">Start Date</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <span class="fa fa-calendar-o"></span>
+                                                                </span>
+                                                            </div>
+                                                            <input type='text' class="form-control pickadate" placeholder="Start Date" id="txtStartDate" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row last">
+                                                    <label class="col-md-3 label-control" for="txtEndDate">End Date</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <span class="fa fa-calendar-o"></span>
+                                                                </span>
+                                                            </div>
+                                                            <input type='text' class="form-control pickadate" placeholder="End Date" id="txtEndDate" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 label-control" for="userinput8">Note</label>
+                                                    <div class="col-md-9">
+                                                        <textarea id="userinput8" rows="6" class="form-control border-primary" name="bio" placeholder="Bio"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-actions right">
+                                            <button type="button" class="btn btn-warning mr-1">
+                                                <i class="ft-x"></i> Cancel
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-check-square-o"></i> Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr />
+                                @*Package List table*@
+                                <section id="initialization">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="form-section"><i class="ft-clipboard"></i> Package List</h4>
+                                                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                                    <div class="heading-elements">
+                                                        <ul class="list-inline mb-0">
+                                                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="card-content collapse show">
+                                                    <div class="card-body card-dashboard">
+                                                        <table class="table table-striped table-bordered dataex-key-basic">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Name</th>
+                                                                    <th>Position</th>
+                                                                    <th>Office</th>
+                                                                    <th>Age</th>
+                                                                    <th>Start date</th>
+                                                                    <th>Salary</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Tiger Nixon</td>
+                                                                    <td>System Architect</td>
+                                                                    <td>Edinburgh</td>
+                                                                    <td>61</td>
+                                                                    <td>2011/04/25</td>
+                                                                    <td>$320,800</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section scripts
+{
+    <script>
+         $(document).ready(function () {  
+             $("#btnSaveEntity").click(function () {
+                 SaveEntityForm();
+             });  
+         }); 
+
+        function SaveEntityForm() {
+            var d = new Date();
+            var month = d.getMonth()+1;
+            var day = d.getDate();
+            var output = d.getFullYear() + '/' +
+            (month<10 ? '0' : '') + month + '/' +
+                (day < 10 ? '0' : '') + day;
+
+            var entity = {
+                FirstName: $('#Entity_FirstName').val(),
+                LastName: $('#Entity_LastName').val(),
+                EntityName: $('#Entity_EntityName').val(),
+                ServiceTypeId: $('#Entity_ServiceType_ServiceTypeId').val(),
+                MobileNumber: $('#Entity_MobileNumber').val(),
+                TelephoneNumber: $('#Entity_TelephoneNumber').val(),
+                //EnrolledDate: $('#Entity_EnrolledDate').text(),
+                EnrollDate: output,
+                EstablishedYear: $('#Entity_EstablishedYear').val(),
+                Email: $('#Entity_Email').val()
+            }
+            alert( output);
+              $.ajax({  
+                     url: '/api/EntityAdmin',  
+                     type: 'POST',  
+                     dataType: 'json',  
+                     data: entity,  
+                     success: function (data, textStatus, xhr) {  
+                         console.log(data);  
+                     },  
+                     error: function (xhr, textStatus, errorThrown) {  
+                         console.log('Error in Operation');  
+                     }  
+                 });  
+        }
+
+    </script>
+
+}
